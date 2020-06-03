@@ -81,7 +81,7 @@ if [ "$option" = 1 ] || [ "$option" = 2 ]; then # This happens when installing o
 
     # Cloning Inky-Calendar repo
     echo -e "\e[1;36m"Cloning Inky-Calendar repo from Github"\e[0m"
-    cd /home/"$USER" && git clone https://github.com/aceisace/Inky-Calendar
+    cd /home/"$USER" && git clone https://github.com/emilyboda/Inky-Calendar-Emily-edits-v2/
 
     # Installing dependencies
     echo -e "\e[1;36m"Installing requirements for Inky-Calendar software"\e[0m"
