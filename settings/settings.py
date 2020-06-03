@@ -11,7 +11,27 @@ units = "metric"                      # "metric" # "imperial"
 hours = "24"                          # "24" # "12"
 top_section = "inkycal_weather"       # "inkycal_weather"
 middle_section = "inkycal_calendar"   # "inkycal_agenda" #"inkycal_calendar"
-bottom_section = "inkycal_rss"        # "inkycal_rss"
+bottom_section = "inkycal_rss"        # "inkycal_rss" # "inkycal_locations"
+
+"""Enabling location module"""
+# 1. Add your name here or leave it as Me
+location_my_name = "Me"
+# 2. Download your cookies file (original instructions are on step 2
+#    of this page: https://www.home-assistant.io/integrations/google_maps/).
+#    Log in to the google location sharing after installing one of the two extensions
+#    and then download the cookies file.
+# 3. Transfer the cookies file to your pi and set the file path here as follows.
+location_cookies_file = "/home/pi/Inky-Calendar/example.cookies"
+# 4. Edit the following to reflect the email address you just logged in to.
+location_google_email = "example@gmail.com"
+# 5. Choose which format you would like the location to show as:
+#    name:      usually the city name (ex. "Philadelphia" or "Stuttgart")
+#    admin1:    usually the state, province, or district (ex. "Pennsylvania" or "Baden-Wuerttemberg")
+#    admin2:    Not used in the US or Canada, used in the rest of the world. (ex. "Regierungsbezirk" or "Lincolnshire")
+#    cc:        Country abbreviation (ex. "US", "CA", or "DE") REMEMBER THIS IS LOWER CASE
+#    I recommend using two or three of the options.
+#    using the above examples, setting ["name", "admin1", "cc"] will result in showing "Mom: Richmond, Virginia, US"
+location_options = ["name", "admin1"]
 
 """Adding multiple iCalendar URLs or RSS feed URLs"""
 # Single URL:
