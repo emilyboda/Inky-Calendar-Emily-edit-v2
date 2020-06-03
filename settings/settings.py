@@ -9,7 +9,7 @@ model = "epd_7_in_5_v2_colour"        # Choose the E-Paper model (see below)
 language = "en"                       # "en" # "de" # "fr" # "jp" etc.
 units = "metric"                      # "metric" # "imperial"
 hours = "24"                          # "24" # "12"
-top_section = "inkycal_weather"       # "inkycal_weather"
+top_section = "inkycal_weather"       # "inkycal_weather" # "inkycal_simpleweather"
 middle_section = "inkycal_calendar"   # "inkycal_agenda" #"inkycal_calendar"
 bottom_section = "inkycal_rss"        # "inkycal_rss"
 
