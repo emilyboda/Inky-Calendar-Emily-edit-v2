@@ -6,8 +6,14 @@ Copyright by aceisace
 """
 from __future__ import print_function
 from configuration import *
-from locationsharinglib import Service
-import reverse_geocoder as rg
+try:
+    from locationsharinglib import Service
+except ModuleNotFoundError:
+    raise Exception ('requirement is not installed. Please install with: pip3 install locationsharinglib')
+try:
+    import reverse_geocoder as rg
+except ModuleNotFoundError:
+    raise Exception ('requirement is not installed. Please install with: pip3 install reverse_geocoder && sudo apt-get install libatlas-base-dev')
 
 service = Service(cookies_file=location_cookies_file, authenticating_account=location_google_email)
 
