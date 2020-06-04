@@ -22,7 +22,7 @@ if [ "$option" = 3 ]; then
 
     # Remove requirements of software
     echo -e "\e[1;36m"Removing requirements for Inky-Calendar software"\e[0m"
-    cd /home/"$USER"/Inky-Calendar && pip3 uninstall -r requirements.txt && sudo apt-get clean && sudo apt-get autoremove -y
+    cd /home/"$USER"/Inky-Calendar-Emily-edit-v2 && pip3 uninstall -r requirements.txt && sudo apt-get clean && sudo apt-get autoremove -y
 
     # Remove configuration file for supervisor if it exists
     if [ -e /etc/supervisor/conf.d/inkycal.conf ]; then sudo rm /etc/supervisor/conf.d/inkycal.conf
@@ -34,8 +34,8 @@ if [ "$option" = 3 ]; then
 
     # Remove the Inky-Calendar directory if it exists
     echo -e "Removing the Inky-Calendar folder if it exists"
-    if [ -d "/home/$USER/Inky-Calendar" ]; then
-        sudo rm -r /home/"$USER"/Inky-Calendar/
+    if [ -d "/home/$USER/Inky-Calendar-Emily-edit-v2" ]; then
+        sudo rm -r /home/"$USER"/Inky-Calendar-Emily-edit-v2/
 	echo -e "\e[1;36m"Found Inky-Calendar folder and deleted it"\e[0m"
     fi
     echo -e "\e[1;36m"All done!"\e[0m"
@@ -43,7 +43,7 @@ fi
 
 if [ "$option" = 1 ]; then # UPDATE software
     echo -e "\e[1;36m"Checking if the Inky-Calendar folder exists..."\e[0m"
-    if [ -d "/home/$USER/Inky-Calendar" ]; then
+    if [ -d "/home/$USER/Inky-Calendar-Emily-edit-v2" ]; then
         echo -e "Found Inky-Calendar directory in /home/$USER"
 	sleep 2
         echo -e "To prevent overwriting the Inky-Calendar folder, the installer will not continue."
@@ -85,11 +85,11 @@ if [ "$option" = 1 ] || [ "$option" = 2 ]; then # This happens when installing o
 
     # Installing dependencies
     echo -e "\e[1;36m"Installing requirements for Inky-Calendar software"\e[0m"
-    cd /home/"$USER"/Inky-Calendar && pip3 install -r requirements.txt
-    cd /home/"$USER"/Inky-Calendar && sudo apt-get install libatlas-base-dev
+    cd /home/"$USER"/Inky-Calendar-Emily-edit-v2 && pip3 install -r requirements.txt
+    cd /home/"$USER"/Inky-Calendar-Emily-edit-v2 && sudo apt-get install libatlas-base-dev
     # Create symlinks of settings and configuration file
-    ln -s /home/"$USER"/Inky-Calendar/settings/settings.py /home/"$USER"/Inky-Calendar/modules/
-    ln -s /home/"$USER"/Inky-Calendar/settings/configuration.py /home/"$USER"/Inky-Calendar/modules/
+    ln -s /home/"$USER"/Inky-Calendar-Emily-edit-v2/settings/settings.py /home/"$USER"/Inky-Calendar-Emily-edit-v2/modules/
+    ln -s /home/"$USER"/Inky-Calendar-Emily-edit-v2/settings/configuration.py /home/"$USER"/Inky-Calendar-Emily-edit-v2/modules/
     echo ""
 
     echo -e "\e[97mDo you want the software to start automatically at boot?"
@@ -107,10 +107,10 @@ if [ "$option" = 1 ] || [ "$option" = 2 ]; then # This happens when installing o
 
 	    sudo bash -c 'cat > /etc/supervisor/conf.d/inkycal.conf' << EOF
 [program:Inky-Calendar]
-command = /usr/bin/python3 /home/$USER/Inky-Calendar/modules/inkycal.py
-stdout_logfile = /home/$USER/Inky-Calendar/logs/logfile.log
+command = /usr/bin/python3 /home/$USER/Inky-Calendar-Emily-edit-v2/modules/inkycal.py
+stdout_logfile = /home/$USER/Inky-Calendar-Emily-edit-v2/logs/logfile.log
 stdout_logfile_maxbytes = 5MB
-stderr_logfile = /home/$USER/Inky-Calendar/logs/errors.log
+stderr_logfile = /home/$USER/Inky-Calendar-Emily-edit-v2/logs/errors.log
 stderr_logfile_maxbytes = 5MB
 user = $USER
 startsecs = 30
@@ -124,7 +124,7 @@ EOF
     echo -e "\e[1;36m"The install was successful."\e[0m"
     sleep 2
     echo -e "\e[1;31m"You can now add your personal details in the settings file"\e[0m"
-    echo -e "\e[1;31m"located in Inky-Calendar/settings/settings.py"\e[0m"
+    echo -e "\e[1;31m"located in Inky-Calendar-Emily-edit-v2/settings/settings.py"\e[0m"
     sleep 2
 
     echo -e "\e[97mIf you want to add your details now, selet an option from below"
@@ -147,27 +147,27 @@ EOF
 	if [ "$settings" = 1 ]; then
 		echo -e "\e[1;36m"Add your details, click on generate, keep the file and close the browser"\e[0m"
 		sleep 5
-		chromium-browser /home/"$USER"/Inky-Calendar/settings/settings-UI.html
+		chromium-browser /home/"$USER"/Inky-Calendar-Emily-edit-v2/settings/settings-UI.html
 		echo -e "\e[97mHave you added your details and clicked on 'Generate'?"
 		echo -e "\e[97mPress [Y] for yes."
 		read -r -p 'Waiting for input...  ' complete
 		if [ -z "$complete" ] || [ "$complete" = Y ] || [ "$complete" = y ]; then
-			echo -e "\e[1;36m"Moving settings file to /home/"$USER"/Inky-Calendar/settings/"\e[0m"
-			if [ -e /etc/supervisor/conf.d/inkycal.conf ]; then mv /home/"$USER"/Downloads/settings.py /home/"$USER"/Inky-Calendar/settings/
+			echo -e "\e[1;36m"Moving settings file to /home/"$USER"/Inky-Calendar-Emily-edit-v2/settings/"\e[0m"
+			if [ -e /etc/supervisor/conf.d/inkycal.conf ]; then mv /home/"$USER"/Downloads/settings.py /home/"$USER"/Inky-Calendar-Emily-edit-v2/settings/
     		fi
 		fi
 	fi
 
 	if [ "$settings" = 2 ]; then
 		echo -e "\e[1;36m"Opening settings file with nano"\e[0m"
-		nano /home/"$USER"/Inky-Calendar/settings/settings.py
+		nano /home/"$USER"/Inky-Calendar-Emily-edit-v2/settings/settings.py
 	fi
 
 	if [ "$settings" = 3 ]; then
 		echo -e "\e[1;36m"Opening settings file with python3"\e[0m"
-		python3 /home/"$USER"/Inky-Calendar/settings/settings.py
+		python3 /home/"$USER"/Inky-Calendar-Emily-edit-v2/settings/settings.py
 	fi
 
     echo -e "\e[1;36m"You can test if the programm works by running:"\e[0m"
-    echo -e "\e[1;36m"python3 /home/"$USER"/Inky-Calendar/modules/inkycal.py"\e[0m"
+    echo -e "\e[1;36m"python3 /home/"$USER"/Inky-Calendar-Emily-edit-v2/modules/inkycal.py"\e[0m"
 fi
