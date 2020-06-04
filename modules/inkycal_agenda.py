@@ -33,8 +33,10 @@ event_col_start = time_col_start + time_col_width
 
 """Find max number of lines that can fit in the middle section and allocate
 a position for each line"""
-max_lines = int(middle_section_height+bottom_section_height -
-                  (border_top * 2))// line_height
+if bottom_section != "":
+  max_lines = int(middle_section_height - (border_top * 2))// line_height
+else:
+  max_lines = int(middle_section_height+bottom_section_height - (border_top * 2))// line_height
 
 line_pos = [(border_left, int(top_section_height + border_top + line * line_height))
   for line in range(max_lines)]
