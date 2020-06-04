@@ -22,7 +22,7 @@ if [ "$option" = 3 ]; then
 
     # Remove requirements of software
     echo -e "\e[1;36m"Removing requirements for Inky-Calendar software"\e[0m"
-    cd /home/"$USER"/Inky-Calendar-Emily-edit-v && pip3 uninstall -r requirements.txt && sudo apt-get clean && sudo apt-get autoremove -y
+    cd /home/"$USER"/Inky-Calendar && pip3 uninstall -r requirements.txt && sudo apt-get clean && sudo apt-get autoremove -y
 
     # Remove configuration file for supervisor if it exists
     if [ -e /etc/supervisor/conf.d/inkycal.conf ]; then sudo rm /etc/supervisor/conf.d/inkycal.conf
