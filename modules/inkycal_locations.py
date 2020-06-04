@@ -87,7 +87,14 @@ def generate_image():
       for _ in range(len(filtered_feeds)):
         write_text(line_width, line_height, filtered_feeds[_],
           line_positions[_], font = font, alignment= 'left')
-
+      
+      """Add a line above the location sharing module"""
+      if three_colour_support == True:
+        draw_col.line((0, bottom_section_offset + border_top, display_width, bottom_section_offset + border_top), fill='black', width=3)
+      else:
+        draw.line((0, bottom_section_offset + border_top, display_width, bottom_section_offset + border_top), fill='black', width=3)
+      
+      """Save image"""
       location_image = crop_image(image, 'bottom_section')
       location_image.save(image_path+'inkycal_locations.png')
       
