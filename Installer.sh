@@ -86,7 +86,7 @@ if [ "$option" = 1 ] || [ "$option" = 2 ]; then # This happens when installing o
     # Installing dependencies
     echo -e "\e[1;36m"Installing requirements for Inky-Calendar software"\e[0m"
     cd /home/"$USER"/Inky-Calendar && pip3 install -r requirements.txt
-    cd /home/"$USER"/Inky-Calendar && sudo apt-get install libatlas-base-dev
+
     # Create symlinks of settings and configuration file
     ln -s /home/"$USER"/Inky-Calendar/settings/settings.py /home/"$USER"/Inky-Calendar/modules/
     ln -s /home/"$USER"/Inky-Calendar/settings/configuration.py /home/"$USER"/Inky-Calendar/modules/
