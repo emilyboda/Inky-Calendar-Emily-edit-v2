@@ -86,28 +86,7 @@ if [ "$option" = 1 ] || [ "$option" = 2 ]; then # This happens when installing o
     # Installing dependencies
     echo -e "\e[1;36m"Installing requirements for Inky-Calendar software"\e[0m"
     cd /home/"$USER"/Inky-Calendar && pip3 install -r requirements.txt
-    
-    # Ask to update system
-    echo -e "\e[1;36m"Are you planning to use the Google Location Sharing module?"\e[0m"
-    sleep 1
-    echo -e "\e[97mPlease type [y] for yes or [n] for no and confirm your selection with [ENTER]"
-    read -r -p 'Waiting for input...  ' location
-    
-    if [ "$location" != Y ] && [ "$location" != y ] && [ "$location" != N ] && [ "$location" != n ]; then echo -e "invalid input, aborting now" exit
-    fi
-    
-    if [ -z "$location" ]; then echo -e "You didn't enter anything, aborting now." exit
-    fi
-    
-    if [ "$location" = Y ] || [ "$location" = y ]; then
-        # Updating and upgrading the system, without taking too much space
-        echo -e "\e[1;36m"Installing requirements for Google Location Sharing"\e[0m"
-    	cd /home/"$USER"/Inky-Calendar && pip3 install -r requirements_location.txt
-	cd /home/"$USER"/Inky-Calendar && sudo apt-get install libatlas-base-dev
-        echo -e "\e[1;36m"System successfully installed dependencies!"\e[0m"
-        echo ""
-    fi
-    
+    cd /home/"$USER"/Inky-Calendar && sudo apt-get install libatlas-base-dev
     # Create symlinks of settings and configuration file
     ln -s /home/"$USER"/Inky-Calendar/settings/settings.py /home/"$USER"/Inky-Calendar/modules/
     ln -s /home/"$USER"/Inky-Calendar/settings/configuration.py /home/"$USER"/Inky-Calendar/modules/
