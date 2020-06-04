@@ -86,7 +86,15 @@ def generate_image():
 
       """Sort events and dates in chronological order"""
       agenda_events = sorted(agenda_events, key = lambda event: event['date'])
-
+      
+      """Removes duplicate events"""
+      prev_event = {}
+      for event in list(agenda_events):
+          if event == prev_event:
+              agenda_events.remove(event)
+          else:
+              prev_event = event
+       
       """Crop the agenda_events in case it's too long"""
       del agenda_events[max_lines:]
 
